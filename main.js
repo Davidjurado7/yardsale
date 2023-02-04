@@ -5,29 +5,34 @@ const menuMobile = document.querySelector('.mobile-menu')
 const carIcon = document.querySelector('.car-container')
 const myOrderContainer = document.querySelector('.my-order-container')
 const cardContainers = document.querySelector('.card-container')
+const productDetails = document.querySelector('.product-detail')
 
 navEmail.addEventListener('click', toggleMenuDesktop)
 menuHamMobile.addEventListener('click', toggleMenuMobile)
 carIcon.addEventListener('click', toggleCarContainer)
 
-function toggleMenuDesktop () {
+
+function toggleMenuDesktop() {
     menuDesktop.classList.toggle('inactive')
     myOrderContainer.classList.add('inactive')
-
+    
 }
 
-function toggleMenuMobile () {
+function toggleMenuMobile() {
     myOrderContainer.classList.add('inactive')
     menuMobile.classList.toggle('inactive')
 }
 
-function toggleCarContainer () {
+function toggleCarContainer() {
     menuDesktop.classList.add('inactive')
     menuMobile.classList.add('inactive')
     myOrderContainer.classList.toggle('inactive') 
-
+    
 }
 
+function toggleAsideProductDetails() {
+    productDetails.classList.toggle('inactive')
+}
 
 const productList = []
 
@@ -73,7 +78,7 @@ productList.push({
 })
 
 function renderProducts(arr) {
-
+    
     for (product of productList) {
         const productCard = document.createElement('div')
         productCard.classList.add('product-card')
@@ -83,13 +88,13 @@ function renderProducts(arr) {
         productImg.setAttribute('src', product.img)
         productCard.appendChild(productImg)
         
-        const productInfo = document.createElement('div')
-        productInfo.classList.add('product-info')
-        productCard.appendChild(productInfo)
+        const productInfoCard = document.createElement('div')
+        productInfoCard.classList.add('product-info-card')
+        productCard.appendChild(productInfoCard)
         
         const productCardTitle = document.createElement('div')
         productCardTitle.classList.add('product-card-title')
-        productInfo.appendChild(productCardTitle)
+        productInfoCard.appendChild(productCardTitle)
         
         const productCardTitlePrice = document.createElement('p')
         productCardTitlePrice.innerText = product.price
@@ -100,7 +105,7 @@ function renderProducts(arr) {
         productCardTitle.appendChild(productCardTitleName)
         
         const productFigure = document.createElement('figure')
-        productInfo.appendChild(productFigure)
+        productInfoCard.appendChild(productFigure)
         
         const productFigureImg = document.createElement('img')
         productFigureImg.setAttribute('src', 'file:///Users/davidjurado/Documents/proyectos/yardsale/Icons/bt_add_to_cart.svg')
@@ -109,3 +114,7 @@ function renderProducts(arr) {
     }
 }
 renderProducts(productList)
+
+
+const productCardImg = document.querySelector('.product-card img')
+productCardImg.addEventListener('click', toggleAsideProductDetails)
