@@ -23,11 +23,15 @@ nav {
 
 }
 
-                          /* Navbar */
 .inactive {
     display: none !important;
-    
 }
+.width70 {
+    width: 70%;;
+}
+
+                          /* Navbar */
+    
 .left-menu {
     display: flex;
     align-items: center;
@@ -106,8 +110,9 @@ nav {
     height: auto;
     border: 1px solid var(--very-light-pink);
     border-radius: 6px; 
-    padding: 20px 20px 0px 20px;           
-}
+    padding: 20px 20px 0px 20px;   
+    background-color: var(--white);        
+}   
 .desktop-menu ul {
     list-style: none;
     padding: 0;
@@ -187,17 +192,17 @@ nav {
 
                  /* Aside car shopping and product details */                               
 .my-order {
-display: grid;
-position: absolute;
-width: 100%;
-place-items: end;
-background-color: var(--white);
+    display: grid;
+    position: absolute;
+    width: 100%;
+    place-items: end;
 }
 .my-order-container {
     padding: 10px;
-    margin: 0px 10px 0px 10px;
-    width: 500px;
+    width: 30%;
     background-color: var(--white);
+    position: absolute;
+    right: 0;
 }
 .title {
     text-align: left;
@@ -341,11 +346,12 @@ background-color: var(--white);
 
                     /* Product details */
 .product-detail{
-    width: 360px;
+    width: 30%;
     display: grid;
     position: absolute;
     right: 0px;
     background-color: var(--white);
+    padding-bottom: 10px;
 }
 .product-image {
     width: 100%;
@@ -439,7 +445,9 @@ background-color: var(--white);
         display: none;
     }
     .my-order-container {
-    width: 300px;
+    width: 100%;
+    position: relative;
+    margin: 0;
     }
     .my-order {
     place-items: center;

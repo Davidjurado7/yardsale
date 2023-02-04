@@ -6,10 +6,12 @@ const carIcon = document.querySelector('.car-container')
 const myOrderContainer = document.querySelector('.my-order-container')
 const cardContainers = document.querySelector('.card-container')
 const productDetails = document.querySelector('.product-detail')
+const productClose = document.querySelector('.product-close')
 
 navEmail.addEventListener('click', toggleMenuDesktop)
 menuHamMobile.addEventListener('click', toggleMenuMobile)
 carIcon.addEventListener('click', toggleCarContainer)
+productClose.addEventListener('click', productClosed)
 
 
 function toggleMenuDesktop() {
@@ -20,18 +22,27 @@ function toggleMenuDesktop() {
 
 function toggleMenuMobile() {
     myOrderContainer.classList.add('inactive')
+    productDetails.classList.add('inactive')
     menuMobile.classList.toggle('inactive')
 }
 
 function toggleCarContainer() {
     menuDesktop.classList.add('inactive')
     menuMobile.classList.add('inactive')
+    productDetails.classList.add('inactive')
     myOrderContainer.classList.toggle('inactive') 
     
 }
 
 function toggleAsideProductDetails() {
+    menuDesktop.classList.add('inactive')
+    menuMobile.classList.add('inactive')
+    myOrderContainer.classList.add('inactive')
     productDetails.classList.toggle('inactive')
+}
+
+function productClosed() {
+    productDetails.classList.add('inactive')
 }
 
 const productList = []
