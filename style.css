@@ -158,7 +158,7 @@ nav {
 .categories{
     padding-bottom: 25px;
     margin-bottom: 25px;
-    border-bottom: 1px solid var(--text-input-field);
+    border-bottom: 1px solid var(--very-light-pink);
 }
 .categories ul li a,
 .personal-account ul li a {

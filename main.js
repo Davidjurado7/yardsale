@@ -34,11 +34,11 @@ function toggleCarContainer() {
     
 }
 
-function toggleAsideProductDetails() {
+function openProductDetails() {
     menuDesktop.classList.add('inactive')
     menuMobile.classList.add('inactive')
     myOrderContainer.classList.add('inactive')
-    productDetails.classList.toggle('inactive')
+    productDetails.classList.remove('inactive')
 }
 
 function productClosed() {
@@ -98,6 +98,7 @@ function renderProducts(arr) {
         const productImg = document.createElement('img')
         productImg.setAttribute('src', product.img)
         productCard.appendChild(productImg)
+        productImg.addEventListener('click', openProductDetails)
         
         const productInfoCard = document.createElement('div')
         productInfoCard.classList.add('product-info-card')
@@ -127,5 +128,4 @@ function renderProducts(arr) {
 renderProducts(productList)
 
 
-const productCardImg = document.querySelector('.product-card img')
-productCardImg.addEventListener('click', toggleAsideProductDetails)
+// const productCardImg = document.querySelector('.product-card img')
