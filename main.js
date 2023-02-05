@@ -7,12 +7,44 @@ const myOrderContainer = document.querySelector('.my-order-container')
 const cardContainers = document.querySelector('.card-container')
 const productDetails = document.querySelector('.product-detail')
 const productClose = document.querySelector('.product-close')
+const productPrice = document.querySelector('.product-price')
+const productName = document.querySelector('.product-name')
+const productImage = document.querySelector('.product-image')
+const productDescription = document.querySelector('.product-description')
+
+const productList = []
+
+productList.push({
+    name: 'Bike',
+    price: "120 €",
+    img: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    description: 'bicycle, also called bike, two-wheeled steerable machine that is pedaled by the riders feet. On a standard bicycle the wheels are mounted in-line in a metal frame, with the front wheel held in a rotatable fork.',
+})
+productList.push({
+    name: 'Ipad',
+    price: "500 €",
+    img: 'https://images.pexels.com/photos/1334597/pexels-photo-1334597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    description: 'iPad mini is meticulously designed to be absolutely beautiful. An all-new enclosure features a new, larger edge-to-edge screen, along with narrow borders and elegant rounded corners.'
+})
+productList.push({
+    name: 'Mouse',
+    price: "50 €",
+    img: 'https://images.pexels.com/photos/2115256/pexels-photo-2115256.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    description: 'The mouse is a small, movable device that lets you control a range of things on a computer. Most types of mouse have two buttons, and some will have a wheel in between the buttons.'
+})
+productList.push({
+    name: 'Laptop',
+    price: "700 €",
+    img: 'https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    description: 'A laptop computer, sometimes called a notebook computer by manufacturers, is a battery- or AC-powered personal computer generally smaller than a briefcase that can easily be transported and conveniently used in temporary spaces such as on airplanes, in libraries, temporary offices, and at meetings.'
+})
 
 navEmail.addEventListener('click', toggleMenuDesktop)
 menuHamMobile.addEventListener('click', toggleMenuMobile)
 carIcon.addEventListener('click', toggleCarContainer)
 productClose.addEventListener('click', productClosed)
 
+renderProducts(productList)
 
 function toggleMenuDesktop() {
     menuDesktop.classList.toggle('inactive')
@@ -34,7 +66,14 @@ function toggleCarContainer() {
     
 }
 
-function openProductDetails() {
+function openProductDetails(imgSrc) {
+    const detailsProductSelect = productList.filter(product => product.img == imgSrc) 
+
+    productPrice.innerText = (detailsProductSelect[0].price)
+    productName.innerText = (detailsProductSelect[0].name)
+    productDescription.innerText = (detailsProductSelect[0].description)
+    productImage.setAttribute('src', detailsProductSelect[0].img)
+
     menuDesktop.classList.add('inactive')
     menuMobile.classList.add('inactive')
     myOrderContainer.classList.add('inactive')
@@ -45,48 +84,9 @@ function productClosed() {
     productDetails.classList.add('inactive')
 }
 
-const productList = []
-
-productList.push({
-    name: 'Bike',
-    price: "120 €",
-    img: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-})
-productList.push({
-    name: 'Ipad',
-    price: "500 €",
-    img: 'https://images.pexels.com/photos/1334597/pexels-photo-1334597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-})
-productList.push({
-    name: 'Mouse',
-    price: "50 €",
-    img: 'https://images.pexels.com/photos/2115256/pexels-photo-2115256.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-})
-productList.push({
-    name: 'Laptop',
-    price: "120 €",
-    img: 'https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-})
-productList.push({
-    name: 'Bike',
-    price: "120 €",
-    img: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-})
-productList.push({
-    name: 'Ipad',
-    price: "500 €",
-    img: 'https://images.pexels.com/photos/1334597/pexels-photo-1334597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-})
-productList.push({
-    name: 'Mouse',
-    price: "50 €",
-    img: 'https://images.pexels.com/photos/2115256/pexels-photo-2115256.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-})
-productList.push({
-    name: 'Laptop',
-    price: "120 €",
-    img: 'https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-})
+function renderProductCar(product) {
+    console.log(product)
+}
 
 function renderProducts(arr) {
     
@@ -98,7 +98,9 @@ function renderProducts(arr) {
         const productImg = document.createElement('img')
         productImg.setAttribute('src', product.img)
         productCard.appendChild(productImg)
-        productImg.addEventListener('click', openProductDetails)
+        productImg.addEventListener('click', nameImg => {
+            openProductDetails(productImg.src)
+        })
         
         const productInfoCard = document.createElement('div')
         productInfoCard.classList.add('product-info-card')
@@ -120,12 +122,9 @@ function renderProducts(arr) {
         productInfoCard.appendChild(productFigure)
         
         const productFigureImg = document.createElement('img')
-        productFigureImg.setAttribute('src', 'file:///Users/davidjurado/Documents/proyectos/yardsale/Icons/bt_add_to_cart.svg')
+        productFigureImg.setAttribute('src', './Icons/bt_add_to_cart.svg')
         productFigure.appendChild(productFigureImg)
         
     }
 }
-renderProducts(productList)
 
-
-// const productCardImg = document.querySelector('.product-card img')
