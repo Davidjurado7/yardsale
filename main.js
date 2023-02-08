@@ -188,7 +188,7 @@ function renderProducts(arr) {
         productInfoCard.appendChild(productCardTitle)
         
         const productCardTitlePrice = document.createElement('p')
-        productCardTitlePrice.innerText = product.price
+        productCardTitlePrice.innerText = `${(product.price)} €`
         productCardTitle.appendChild(productCardTitlePrice)
         
         const productCardTitleName = document.createElement('p')
